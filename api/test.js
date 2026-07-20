@@ -1,20 +1,10 @@
 export default async function handler(req, res) {
-  let telegramLoadError = null;
-  let groqLoadError = null;
+  let webhookLoadError = null;
 
   try {
-    await import('../lib/telegram.js');
+    await import('./webhook.js');
   } catch (err) {
-    telegramLoadError = {
-      message: err.message,
-      stack: err.stack
-    };
-  }
-
-  try {
-    await import('../lib/groq.js');
-  } catch (err) {
-    groqLoadError = {
+    webhookLoadError = {
       message: err.message,
       stack: err.stack
     };
@@ -22,8 +12,7 @@ export default async function handler(req, res) {
 
   res.status(200).json({
     nodeVersion: process.version,
-    telegramLoadError,
-    groqLoadError,
-    message: "Dynamic import diagnostic completed."
+    webhookLoadError,
+    message: "Dynamic import of webhook completed."
   });
 }
