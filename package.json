@@ -1,0 +1,14 @@
+{
+  "name": "telegram-human-bot-groq",
+  "version": "1.0.0",
+  "description": "A Telegram bot deployed on Vercel that chats like a real human using Meta Llama 3.1 on Groq API.",
+  "main": "api/webhook.js",
+  "type": "module",
+  "scripts": {
+    "start": "node local.js",
+    "local": "node local.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
