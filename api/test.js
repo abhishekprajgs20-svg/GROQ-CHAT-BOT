@@ -1,12 +1,29 @@
-export default function handler(req, res) {
+export default async function handler(req, res) {
+  let telegramLoadError = null;
+  let groqLoadError = null;
+
+  try {
+    await import('../lib/telegram.js');
+  } catch (err) {
+    telegramLoadError = {
+      message: err.message,
+      stack: err.stack
+    };
+  }
+
+  try {
+    await import('../lib/groq.js');
+  } catch (err) {
+    groqLoadError = {
+      message: err.message,
+      stack: err.stack
+    };
+  }
+
   res.status(200).json({
     nodeVersion: process.version,
-    platform: process.platform,
-    envKeysPresent: {
-      telegramToken: !!process.env.TELEGRAM_BOT_TOKEN,
-      groqApiKey: !!process.env.GROQ_API_KEY,
-      humanName: !!process.env.HUMAN_NAME
-    },
-    message: "Vercel Node.js runtime is working normally! 🚀"
+    telegramLoadError,
+    groqLoadError,
+    message: "Dynamic import diagnostic completed."
   });
 }
