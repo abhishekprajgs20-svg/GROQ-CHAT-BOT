@@ -5,6 +5,11 @@
       "src": "/api/webhook",
       "methods": ["POST", "GET"],
       "dest": "api/webhook.js"
+    },
+    {
+      "src": "/api/test",
+      "methods": ["GET"],
+      "dest": "api/test.js"
     }
   ]
 }
