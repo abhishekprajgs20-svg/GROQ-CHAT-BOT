@@ -1,0 +1,12 @@
+# Local environment variables
+.env
+.env.local
+
+# Dependency directories
+node_modules/
+
+# Keep-alives or logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.vercel
